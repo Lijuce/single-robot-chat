@@ -22,6 +22,7 @@
 
 <script scoped>
 import ChatItem from "../components/ChatItem.vue";
+import config from '@/config.js';
 import axios from "axios";
 export default {
   data() {
@@ -33,22 +34,6 @@ export default {
     "chat-item": ChatItem
     // "chat-feature": ChatFeature
   },
-  // mounted() {
-  //   this.scrollToBottom();
-  // },
-  // //每次页面渲染完之后滚动条在最底部
-  // updated: function() {
-  //   this.scrollToBottom();
-  // },
-  // watch: {
-  //   processData: "scrollToBottom"
-  // },
-  // scrollToBottom: function() {
-  //   this.$nextTick(() => {
-  //     var div = this.$el.querySelector("message-content");
-  //     div.scrollTop = div.scrollHeight;
-  //   });
-  // },
   data: function() {
     return {
       inputDisable: true, // 是否正在输入
@@ -80,7 +65,7 @@ export default {
       var $this = this;
       axios
         // .get("api/medical", {
-        .get("/medical", {
+        .get(`${config.HOST}/medical`, {
           params: {
             q: this.input_text,
             id: "123"
